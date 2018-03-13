@@ -1,28 +1,18 @@
 ---
 nodes:
 - address: nodenuvem1.sj.ifsc.edu.br
-  role: [worker]
+  role: [controlplane,worker,etcd]
   hostname_override: nodenuvem1
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem2.sj.ifsc.edu.br
-  role: [worker]
+  role: [controlplane,worker,etcd]
   hostname_override: nodenuvem2
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem3.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
   hostname_override: nodenuvem3
-  user: rancher
-  ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem4.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
-  hostname_override: nodenuvem4
-  user: rancher
-  ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem5.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
-  hostname_override: nodenuvem5
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
 
