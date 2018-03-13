@@ -1,4 +1,4 @@
-EXTRA_CMDLINE: /init
+hostname: nodenuvem3
 rancher:
   docker:
     engine: docker-17.03.2-ce
@@ -12,10 +12,35 @@ rancher:
       search:
       - sj.ifsc.edu.br
     interfaces:
-      mac=38:EA:A7:19:CD:4D:
-        address: 191.36.8.24/27
+      en*:
+        dhcp: false
+      eth*:
+        dhcp: false
+      bond*:
+        dhcp: false
+      bond0:
+        addresses:
+        - 191.36.8.23/27
         gateway: 191.36.8.30
+        dhcp: false
+        bond_opts:
+          downdelay: "200"
+          lacp_rate: "1"
+          miimon: "100"
+          mode: "4"
+          updelay: "200"
+          xmit_hash_policy: layer2+3
+      mac=00:08:54:B0:8C:C3:
+        dhcp: false
+        bond: bond0
+      mac=38:EA:A7:19:CD:83:
+        dhcp: false
+        bond: bond0
   state:
+    autoformat:              
+    - /dev/sda               
+    - /dev/sdb          
+    - /dev/sdc    
     dev: LABEL=RANCHER_STATE
     wait: true
 ssh_authorized_keys:
