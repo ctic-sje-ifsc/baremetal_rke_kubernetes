@@ -22,7 +22,6 @@ rancher:
         addresses:
         - 191.36.8.23/27
         gateway: 191.36.8.30
-        dhcp: false
         bond_opts:
           downdelay: "200"
           lacp_rate: "1"
@@ -31,10 +30,8 @@ rancher:
           updelay: "200"
           xmit_hash_policy: layer2+3
       mac=00:08:54:B0:8C:C3:
-        dhcp: false
         bond: bond0
       mac=38:EA:A7:19:CD:83:
-        dhcp: false
         bond: bond0
   state:
     autoformat:              
