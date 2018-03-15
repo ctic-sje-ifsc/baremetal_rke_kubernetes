@@ -1,4 +1,14 @@
+EXTRA_CMDLINE: /init
 hostname: nodenuvem3
+mounts:
+- - /dev/sdb
+  - /mnt/b
+  - ext4
+  - ""
+- - /dev/sdc
+  - /mnt/c
+  - ext4
+  - ""
 rancher:
   console: debian
   docker:
@@ -13,16 +23,11 @@ rancher:
       search:
       - sj.ifsc.edu.br
     interfaces:
-      en*:
-        dhcp: false
-      eth*:
-        dhcp: false
       bond*:
         dhcp: false
       bond0:
         addresses:
         - 191.36.8.23/27
-        gateway: 191.36.8.30
         bond_opts:
           downdelay: "200"
           lacp_rate: "1"
@@ -30,15 +35,27 @@ rancher:
           mode: "4"
           updelay: "200"
           xmit_hash_policy: layer2+3
+        gateway: 191.36.8.30
+      en*:
+        dhcp: false
+      eth*:
+        dhcp: false
       mac=00:08:54:B0:8C:C3:
         bond: bond0
       mac=38:EA:A7:19:CD:83:
         bond: bond0
+  services:
+    user-volumes:
+      volumes:
+      - /home:/home
+      - /opt:/opt
+      - /var/lib/kubelet:/var/lib/kubelet
+      - /etc/kubernetes:/etc/kubernetes
   state:
-    autoformat:              
-    - /dev/sda               
-    - /dev/sdb          
-    - /dev/sdc    
+    autoformat:
+    - /dev/sda
+    - /dev/sdb
+    - /dev/sdc
     dev: LABEL=RANCHER_STATE
     wait: true
 ssh_authorized_keys:
