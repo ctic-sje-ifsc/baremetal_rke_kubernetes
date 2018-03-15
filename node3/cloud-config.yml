@@ -1,5 +1,6 @@
 hostname: nodenuvem3
 rancher:
+  console: debian
   docker:
     engine: docker-17.03.2-ce
   environment:

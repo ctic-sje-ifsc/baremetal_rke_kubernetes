@@ -1,7 +1,9 @@
 hostname: nodenuvem1
 rancher:
+  console: debian
   docker:
     engine: docker-17.03.2-ce
+  console: debian
   environment:
     EXTRA_CMDLINE: /init
   network:
