@@ -31,7 +31,7 @@ services:
     cluster_domain: cluster.local
     cluster_dns_server: 10.233.0.3
     infra_container_image: gcr.io/google_containers/pause-amd64:3.0
-    extra-args:
+    extra_args:
       volume-plugin-dir: /var/lib/kubelet/volumeplugins    
   kubeproxy:
 
