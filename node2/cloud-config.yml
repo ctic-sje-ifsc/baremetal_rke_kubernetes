@@ -52,7 +52,6 @@ rancher:
       - /var/lib/kubelet:/var/lib/kubelet
       - /etc/kubernetes:/etc/kubernetes
       - /var/lib/rook:/var/lib/rook
-
   state:
     autoformat:
     - /dev/sda
