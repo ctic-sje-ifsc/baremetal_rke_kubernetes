@@ -2,7 +2,7 @@
 
 Nesse repositório é descrita a instalação do cluster [kubernetes](kubernetes.io) via [Rancher Kubernetes Engine - RKE](https://github.com/rancher/rke) em hosts com [RancherOS](https://rancher.com/rancher-os/). 
 
-Atualmente o _cluster_ as seguintes especificações de _hardware_:
+Atualmente o _cluster_ possui as seguintes especificações de _hardware_:
 
 * 3 x HP Z220: 
   * 1 x Intel(R) Xeon(R) CPU E3-1225 V2 @ 3.20GHz 
@@ -15,7 +15,7 @@ Para o provisionamento e configuração dos hosts foi utilizado o arquivo [cloud
 
 ## Instânciação dos hosts
 
-Os nós(hosts) são instânciadas da seguinte maneira:
+Os nós(hosts) são instânciados da seguinte maneira:
 
 É feito o boot da máquina com uma [iso do RancherOS](http://rancher.com/docs/os/v1.2/en/running-rancheros/server/install-to-disk/) e então executa-se o seguinte comando, com seu respectivo arquivo cloud-config.yml: 
 
