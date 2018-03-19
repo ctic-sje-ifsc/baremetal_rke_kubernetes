@@ -1,11 +1,11 @@
 EXTRA_CMDLINE: /init
 hostname: nodenuvem3
 mounts:
-- - /dev/sdb
+- - /dev/sdb1
   - /mnt/b
   - ext4
   - ""
-- - /dev/sdc
+- - /dev/sdc1
   - /mnt/c
   - ext4
   - ""
