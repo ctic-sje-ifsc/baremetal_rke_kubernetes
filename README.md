@@ -28,6 +28,14 @@ Embora esteja configurado para uma versão específica do Docker e do console é
 ```$ sudo ros console switch debian```  
 ```$ sudo ros engine switch docker-17.03.2-ce```
 
+Configurado módulos e instalado pacotes para suporte a Gluster e NFS:
+
+```bash
+$ apt update 
+$ apt install nfs-common glusterfs-client -y
+$ modprobe dm_snapshot dm_mirror dm_thin_pool
+```
+
 A versão do docker e o console são exemplos.
 
 ## Instalando o kubernetes via [rke](https://github.com/rancher/rke):
