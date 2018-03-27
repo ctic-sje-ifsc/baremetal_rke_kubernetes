@@ -1,14 +1,5 @@
 EXTRA_CMDLINE: /init
 hostname: nodenuvem2
-mounts:
-- - /dev/sdb1
-  - /mnt/b
-  - ext4
-  - ""
-- - /dev/sdc1
-  - /mnt/c
-  - ext4
-  - ""
 rancher:
   console: debian
   docker:

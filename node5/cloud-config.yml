@@ -1,5 +1,5 @@
 EXTRA_CMDLINE: /init
-hostname: nodenuvem3
+hostname: nodenuvem5
 rancher:
   console: debian
   docker:
@@ -18,7 +18,7 @@ rancher:
         dhcp: false
       bond0:
         addresses:
-        - 191.36.8.23/27
+        - 191.36.8.25/27
         bond_opts:
           downdelay: "200"
           lacp_rate: "1"
@@ -31,9 +31,13 @@ rancher:
         dhcp: false
       eth*:
         dhcp: false
-      mac=00:08:54:B0:8C:C3:
+      mac=44:a8:42:1b:93:6f:
         bond: bond0
-      mac=38:EA:A7:19:CD:83:
+      mac=44:a8:42:1b:93:70:
+        bond: bond0
+      mac=44:a8:42:1b:93:71:
+        bond: bond0
+      mac=44:a8:42:1b:93:72:
         bond: bond0
   services:
     user-volumes:
