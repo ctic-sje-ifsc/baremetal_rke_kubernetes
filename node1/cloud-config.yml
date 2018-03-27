@@ -1,3 +1,10 @@
+#cloud-config
+rancher:
+  modules: 
+    - dm_snapshot
+    - dm_mirror
+    - dm_thin_pool
+root@nodenuvem1:/home/rancher# ros config export
 EXTRA_CMDLINE: /init
 hostname: nodenuvem1
 rancher:
@@ -6,6 +13,10 @@ rancher:
     engine: docker-17.03.2-ce
   environment:
     EXTRA_CMDLINE: /init
+  modules:
+  - dm_snapshot
+  - dm_mirror
+  - dm_thin_pool
   network:
     dns:
       nameservers:

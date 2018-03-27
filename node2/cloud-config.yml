@@ -6,6 +6,10 @@ rancher:
     engine: docker-17.03.2-ce
   environment:
     EXTRA_CMDLINE: /init
+  modules:
+  - dm_snapshot
+  - dm_mirror
+  - dm_thin_pool
   network:
     dns:
       nameservers:
