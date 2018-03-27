@@ -43,6 +43,8 @@ rancher:
       - /var/lib/kubelet:/var/lib/kubelet
       - /var/lib/rook:/var/lib/rook
       - /etc/kubernetes:/etc/kubernetes
+  services_include:
+    kernel-extras: true
   state:
     dev: LABEL=RANCHER_STATE
     wait: true
@@ -51,3 +53,20 @@ ssh_authorized_keys:
   gabriel.souza@sj-ctic-29736
 - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEArgRS9p4JBq6CGuugYkf8PW7lejJpcJzDdjntND8wKhGUibkZRXcrxI40ClDEp7xLPzIzx6YSyV77AA16ers6AZs83FVSQY/sVO/qTXReyjHKJ1UhB3NQWsMI6XO+mcHFef50WLJ4rHd6b3A8swwF4XK4UtF8K6cDtJnJ1w4DmGwf3uAec0dUWF7UF4nP9VkTbH4bWETHPO7VXy5AcXx3rkzFF6+krtvrUHvC6QlzcUT0ofqb3mLBbWstaznE/lqXRFqHVwkkSLTy476qYM5286+UOTfTcwjsVCiohpoihPGWp4UE8ROKSmP8wLdYGHEJrB9k5FJGkZ5RjLhQ9ZIW9Dn/cgqFjOpvICe+26Zc7qaKTDp9vTCVkrZ94RV1e8gWlwbWcdNavuvpKcIxaNVmsxZ3RUiI5yewdGR3PCEbRkBiKq49E9cmitgbYWnn1jTQz9XXFSXL2MxRA4df6khmPZtKukvdjljt4jfbR40CZ5Q6VtJLO4yN7oYUWE+z3+YJtalT2VYO+L12phVAwjLlwn7JXijzXckBt6mCtTmQFCLBek/Y3EGdYpKnGLCfwvenpebxUOrhZFX8RJiHH8RQqUVv9LYtCdt88RdzAG15FlHufYQQHC+t2nZDrtW+XHpLBPgLFmbfDf03OIfIg/hxPwCDSPKqWgnpWJukdmuVze8=
   root@monitoramento
+write_files:
+- content: |+
+    {
+        "name": "bridge",
+        "type": "bridge",
+        "bridge": "docker-sys",
+        "isDefaultGateway": true,
+        "ipMasq": true,
+        "hairpinMode": true,
+        "ipam": {
+            "type": "host-local",
+            "subnet": "169.254.25.1/16"
+        }
+    }
+  owner: root
+  path: /etc/docker/cni/bridge.d/bridge.conf
+  permissions: "0644"
