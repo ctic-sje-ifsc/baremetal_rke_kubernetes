@@ -46,7 +46,7 @@ rancher:
       - /etc/kubernetes:/etc/kubernetes
   services_include:
     kernel-extras: true
-    volume-nfs: true
+    kernel-headers-system-docker: true
     open-iscsi: true
     volume-nfs: true
   state:
