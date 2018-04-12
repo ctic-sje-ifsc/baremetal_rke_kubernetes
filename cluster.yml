@@ -46,31 +46,18 @@ services:
     cluster_dns_server: 10.233.0.3
     infra_container_image: gcr.io/google_containers/pause-amd64:3.0
     extra_args:
-      volume-plugin-dir: /var/lib/kubelet/volumeplugins
-      feature-gates: MountPropagation=true     
+      feature-gates: MountPropagation=true    
+    extra_binds:
+      - "/var/lib/storageos:/var/lib/storageos:rshared" 
   kubeproxy:
 
 network:
-  plugin: flannel
-  options:
+  plugin: canal
 
 authentication:
   strategy: x509
-
-# all addon manifests MUST specify a namespace
-#addons: |-
-#    ---
-#    apiVersion: v1
-#    kind: Pod
-#    metadata:
-#      name: my-nginx
-#      namespace: default
-#    spec:
-#      containers:
-#      - name: my-nginx
-#        image: nginx
-#        ports:
-#        - containerPort: 80
+  sans:
+  - "api-cloud.sj.ifsc.edu.br"
 
 system_images:
   etcd: rancher/etcd:v3.0.17
