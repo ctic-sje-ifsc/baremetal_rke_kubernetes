@@ -33,9 +33,9 @@ rancher:
         dhcp: false
       eth*:
         dhcp: false
-      mac=38:ea:a7:19:c5:87:
-        bond: bond0
       mac=00:08:54:b3:6a:e9:
+        bond: bond0
+      mac=38:ea:a7:19:c5:87:
         bond: bond0
   services:
     user-volumes:
@@ -46,7 +46,6 @@ rancher:
       - /etc/kubernetes:/etc/kubernetes
   services_include:
     kernel-extras: true
-    kernel-headers-system-docker: true
     open-iscsi: true
     volume-nfs: true
   state:
@@ -68,20 +67,4 @@ write_files:
     options nbd max_part=15
   owner: root
   path: /etc/modprobe.d/nbd.conf
-  permissions: "0644"
-- content: |+
-    {
-        "name": "bridge",
-        "type": "bridge",
-        "bridge": "docker-sys",
-        "isDefaultGateway": true,
-        "ipMasq": true,
-        "hairpinMode": true,
-        "ipam": {
-            "type": "host-local",
-            "subnet": "169.254.25.1/16"
-        }
-    }
-  owner: root
-  path: /etc/docker/cni/bridge.d/bridge.conf
   permissions: "0644"

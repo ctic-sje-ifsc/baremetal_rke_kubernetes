@@ -45,9 +45,7 @@ rancher:
       - /var/lib/kubelet:/var/lib/kubelet
       - /etc/kubernetes:/etc/kubernetes
   services_include:
-    /var/lib/rancher/conf/dbus.yaml: true
     kernel-extras: true
-    kernel-headers-system-docker: true
     open-iscsi: true
     volume-nfs: true
   state:
@@ -69,20 +67,4 @@ write_files:
     options nbd max_part=15
   owner: root
   path: /etc/modprobe.d/nbd.conf
-  permissions: "0644"
-- content: |+
-    {
-        "name": "bridge",
-        "type": "bridge",
-        "bridge": "docker-sys",
-        "isDefaultGateway": true,
-        "ipMasq": true,
-        "hairpinMode": true,
-        "ipam": {
-            "type": "host-local",
-            "subnet": "169.254.25.1/16"
-        }
-    }
-  owner: root
-  path: /etc/docker/cni/bridge.d/bridge.conf
   permissions: "0644"

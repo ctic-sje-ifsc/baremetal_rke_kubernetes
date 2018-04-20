@@ -31,11 +31,13 @@ Então a máquina estará preparada para entrar no cluster.
 Embora esteja configurado para uma versão específica do Docker, do console e do serviço volume-nfs, é necessário rodar os seguintes comandos para aplicar:
 
 ```$ sudo ros console switch debian```  
-```$ sudo ros engine switch docker-17.03.2-ce```
-```$ sudo ros service up volume-nfs```
-```$ ros service up open-iscsi```
+```$ sudo ros engine switch docker-17.03.2-ce```  
+```$ sudo ros service enable volume-nfs```  
+```$ sudo ros service up volume-nfs```  
+```$ sudo ros service enable open-iscsi```  
+```$ sudo ros service up open-iscsi```
 
-Configurado módulos e instalado pacotes para suporte a Gluster e NFS:
+Configurado módulos e instalado pacotes para suporte a Gluster:
 
 ```bash
 $ apt update 
@@ -49,3 +51,7 @@ A versão do docker e o console são exemplos.
 Com a configuração do cluster.yml gerada utilizamos o seguinte comando para instalar e configurar o kubernetes:
 
 ```$ ./rke up --config cluster.yml```
+
+
+## Recuperação de desastre
+
