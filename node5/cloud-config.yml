@@ -48,6 +48,7 @@ rancher:
       - /opt:/opt
       - /var/lib/kubelet:/var/lib/kubelet
       - /etc/kubernetes:/etc/kubernetes
+      - /var/lib/rook:/var/lib/rook
   services_include:
     kernel-extras: true
     open-iscsi: true
