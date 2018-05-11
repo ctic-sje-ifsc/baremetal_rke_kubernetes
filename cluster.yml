@@ -30,6 +30,7 @@ services:
   kube-api:
     extra_args:
       feature-gates: MountPropagation=true
+      requestheader-client-ca-file: /etc/kubernetes/ssl/kube-ca.pem
 
   kubelet:
     extra_args:
