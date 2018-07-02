@@ -35,9 +35,13 @@ services:
   kubelet:
     extra_args:
       feature-gates: MountPropagation=true
-      volume-plugin-dir: /var/lib/kubelet/volumeplugins    
+      volume-plugin-dir: /var/lib/kubelet/volumeplugins
     extra_binds:
-      - "/var/lib/storageos:/var/lib/storageos:rshared" 
+      - "/var/lib/storageos:/var/lib/storageos:rshared"
+
+  kube-controller:
+    extra_args:
+      horizontal-pod-autoscaler-use-rest-clients: true
 
 network:
   plugin: flannel
