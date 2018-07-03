@@ -31,7 +31,8 @@ services:
     extra_args:
       feature-gates: MountPropagation=true
       requestheader-client-ca-file: /etc/kubernetes/ssl/kube-ca.pem
-
+      # https://kubernetes.io/docs/tasks/access-kubernetes-api/configure-aggregation-layer/
+      requestheader-allowed-names: aggregator
   kubelet:
     extra_args:
       feature-gates: MountPropagation=true
