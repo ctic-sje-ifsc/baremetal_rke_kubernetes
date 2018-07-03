@@ -26,24 +26,6 @@ nodes:
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
 
-services:
-  kube-api:
-    extra_args:
-      feature-gates: MountPropagation=true
-      requestheader-client-ca-file: /etc/kubernetes/ssl/kube-ca.pem
-      # https://kubernetes.io/docs/tasks/access-kubernetes-api/configure-aggregation-layer/
-      requestheader-allowed-names: aggregator
-  kubelet:
-    extra_args:
-      feature-gates: MountPropagation=true
-      volume-plugin-dir: /var/lib/kubelet/volumeplugins
-    extra_binds:
-      - "/var/lib/storageos:/var/lib/storageos:rshared"
-
-  kube-controller:
-    extra_args:
-      horizontal-pod-autoscaler-use-rest-clients: true
-
 network:
   plugin: flannel
 
