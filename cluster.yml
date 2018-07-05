@@ -29,6 +29,15 @@ nodes:
 network:
   plugin: flannel
 
+services:
+  kube-api:
+    extra_args:
+      requestheader-client-ca-file: /etc/kubernetes/ssl/certs/serverca
+      requestheader-allowed-names: aggregator
+  kube-controller:
+    extra_args:
+      horizontal-pod-autoscaler-use-rest-clients: true
+
 authentication:
   strategy: x509
   sans:
@@ -139,4 +148,3 @@ addons: |-
             protocol: TCP
           - containerPort: 443
             protocol: TCP
-
