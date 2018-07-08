@@ -48,6 +48,9 @@ services:
     extra_args:
       authentication-token-webhook: "true"
       read-only-port: "10255"
+  kube-controller:
+    extra_args:
+      horizontal-pod-autoscaler-use-rest-clients: true
 
 authentication:
   strategy: x509
