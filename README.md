@@ -86,6 +86,13 @@ Quando você já possui acesso via ssh (ssh rancher@nodenuvemX) a todos os hosts
 
 ```$ ./rke up --config cluster.yml```
 
+Baseado nas configurações oficiais de [Backups and Disaster Recovery](https://rancher.com/docs/rke/v0.1.x/en/etcd-snapshots/) e [Creating Backups—High Availability Installs](https://rancher.com/docs/rancher/v2.x/en/backups/backups/ha-backups/) configuramos o serviço de snapshots recorrentes do etcd no [cluster.yml](cluster.yml). Os snapshots estão sendo sincronizados diariamente no servidor de monitoramento/backup em /backup/etcd_kubernetes e são gravados em fita. 
+
+Para fazer o restore do backup utilize os passos descritps em [Restoring Backups—High Availability Installs](https://rancher.com/docs/rancher/v2.x/en/backups/restorations/ha-restoration/).
+
+
+## Caso não seja possível a opção acima, é possivel recolocar os serviços no ar seguindo os passos abaixo:
+
 Clone o repositório dos serviços: https://github.com/ctic-sje-ifsc/servicos_kubernetes
 
 Criando todos os namespaces:
