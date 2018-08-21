@@ -52,12 +52,15 @@ services:
     extra_args:
       horizontal-pod-autoscaler-use-rest-clients: true
 
+  etcd:
+    snapshot: true
+    creation: 1h
+    retention: 48h
+
 authentication:
   strategy: x509
   sans:
   - "api-cloud.sj.ifsc.edu.br"
-
-kubernetes_version: "v1.8.11-rancher2-1"
 
 ssh_key_path: ~/.ssh/id_rsa
 
