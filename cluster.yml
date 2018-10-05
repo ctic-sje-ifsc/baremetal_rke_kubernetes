@@ -29,32 +29,10 @@ nodes:
 network:
   plugin: flannel
 
-# Para habilitar suporte a HPA com metrics-server:
-# - https://github.com/rancher/rancher/issues/12711 
-# - ttps://gist.github.com/superseb/90527bd079feac17f379964f50769e28
-# - https://kubernetes.io/docs/tasks/access-kubernetes-api/configure-aggregation-layer/
-
 services:
-  kube-api:
-    extra_args:
-      proxy-client-cert-file: "/etc/kubernetes/ssl/kube-proxy.pem"
-      proxy-client-key-file: "/etc/kubernetes/ssl/kube-proxy-key.pem"
-      requestheader-client-ca-file: "/etc/kubernetes/ssl/kube-ca.pem"
-      requestheader-extra-headers-prefix: "X-Remote-Extra-"
-      requestheader-group-headers: "X-Remote-Group"
-      requestheader-username-headers: "X-Remote-User"
-    podSecurityPolicy: false
-  kubelet:
-    extra_args:
-      authentication-token-webhook: "true"
-      read-only-port: "10255"
-  kube-controller:
-    extra_args:
-      horizontal-pod-autoscaler-use-rest-clients: true
-
   etcd:
     snapshot: true
-    creation: 1h
+    creation: 5h
     retention: 48h
 
 # Antes estavamos utilizando a flag 'kubernetes_version: "v1.8.11-rancher2-1"', e sem o system_images. 
@@ -172,10 +150,3 @@ addons: |-
             protocol: TCP
           - containerPort: 443
             protocol: TCP
-
-# Adicionando o Metrics Server 
-# - https://github.com/kubernetes/kops/tree/master/addons/metrics-server
-# - https://github.com/kubernetes-incubator/metrics-server
-
-addons_include:
-  - https://raw.githubusercontent.com/kubernetes/kops/master/addons/metrics-server/v1.8.x.yaml
