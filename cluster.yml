@@ -32,7 +32,7 @@ network:
 services:
   etcd:
     snapshot: true
-    creation: 5h
+    creation: 5h0s
     retention: 48h
 
 # Antes estavamos utilizando a flag 'kubernetes_version: "v1.8.11-rancher2-1"', e sem o system_images. 
@@ -40,7 +40,7 @@ services:
 # Segunto https://rancher.com/docs/rke/v0.1.x/en/config-options/#kubernetes-version o system_images é precedente ao kubernetes_version. 
 # E segundo https://rancher.com/docs/rke/v0.1.x/en/upgrades/ não é possível fazer downgrade, então por hora fixei nessa versão.
 system_images:
-    kubernetes: rancher/hyperkube:v1.11.1-rancher1
+    kubernetes: rancher/hyperkube:v1.11.6-rancher1
 
 authentication:
   strategy: x509
