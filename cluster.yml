@@ -15,11 +15,11 @@ nodes:
   hostname_override: nodenuvem3
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem4.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: nodenuvem4
-  user: rancher
-  ssh_key_path: ~/.ssh/id_rsa
+# - address: nodenuvem4.sj.ifsc.edu.br
+#   role: [worker]
+#   hostname_override: nodenuvem4
+#   user: rancher
+#   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem5.sj.ifsc.edu.br
   role: [worker]
   hostname_override: nodenuvem5
