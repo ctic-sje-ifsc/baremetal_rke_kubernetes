@@ -14,7 +14,7 @@ rancher:
       - sj.ifsc.edu.br
     interfaces:
       "mac=b4:b5:2f:6f:34:d8":
-        addresses: 191.36.8.26/27
+        address: 191.36.8.26/27
         gateway: 191.36.8.30
         mtu: 9000
         dhcp: false       
