@@ -113,7 +113,19 @@ $ cd servicos_kubernetes
 $ make -i create
 ```
 
+# Instalação do Rancher
 
+Seguimos o tutorial oficial:
+```
+https://rancher.com/docs/rancher/v2.x/en/installation/ha/helm-rancher/#certificates-from-files
+```
 
+Criando a chave:
+```
+$ kubectl -n cattle-system create secret tls tls-rancher-ingress --cert=tls.crt --key=tls.key
+```
 
-
+Subindo o serviço do Rancher via helm:
+```
+helm install rancher-stable/rancher --name rancher --namespace cattle-system --set hostname=projetos.sj.ifsc.edu.br --set ingress.tls.source=tls-rancher-ingress
+```
