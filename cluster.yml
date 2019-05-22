@@ -10,11 +10,11 @@ nodes:
 #   hostname_override: nodenuvem2
 #   user: rancher
 #   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem3.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: nodenuvem3
-  user: rancher
-  ssh_key_path: ~/.ssh/id_rsa
+# - address: nodenuvem3.sj.ifsc.edu.br
+#   role: [worker]
+#   hostname_override: nodenuvem3
+#   user: rancher
+#   ssh_key_path: ~/.ssh/id_rsa
 # - address: nodenuvem4.sj.ifsc.edu.br
 #   role: [worker]
 #   hostname_override: nodenuvem4
@@ -60,7 +60,7 @@ services:
 # Segunto https://rancher.com/docs/rke/v0.1.x/en/config-options/#kubernetes-version o system_images é precedente ao kubernetes_version. 
 # E segundo https://rancher.com/docs/rke/v0.1.x/en/upgrades/ não é possível fazer downgrade, então por hora fixei nessa versão.
 system_images:
-    kubernetes: rancher/hyperkube:v1.11.9-rancher1
+    kubernetes: rancher/hyperkube:v1.12.7-rancher1
 
 authentication:
   strategy: x509
