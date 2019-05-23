@@ -32,17 +32,17 @@ nodes:
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem7.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
-  hostname_override: nodenuvem7
+  hostname_override: proxmoxblade2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem8.sj.ifsc.edu.br
   role: [worker]
-  hostname_override: nodenuvem8
+  hostname_override: proxmoxblade9
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem9.sj.ifsc.edu.br
   role: [worker]
-  hostname_override: nodenuvem9
+  hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 
