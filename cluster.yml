@@ -45,6 +45,11 @@ nodes:
   hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
+- address: 191.36.8.1
+  role: [worker]
+  hostname_override: proxmoxhp1
+  user: ctic
+  ssh_key_path: ~/.ssh/id_rsa
 
 network:
   plugin: flannel
