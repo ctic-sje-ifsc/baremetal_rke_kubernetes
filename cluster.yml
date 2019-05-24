@@ -20,33 +20,33 @@ nodes:
 #   hostname_override: nodenuvem4
 #   user: rancher
 #   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem5.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
+- address: proxmoxdell1.sj.ifsc.edu.br
+  role: [worker]
   hostname_override: proxmoxdell1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem6.sj.ifsc.edu.br
+- address: proxmoxblade1.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
-  hostname_override: nodenuvem6
+  hostname_override: proxmoxblade1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem7.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
+- address: proxmoxblade2.sj.ifsc.edu.br
+  role: [worker]
   hostname_override: proxmoxblade2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem8.sj.ifsc.edu.br
+- address: proxmoxblade9.sj.ifsc.edu.br
   role: [worker]
   hostname_override: proxmoxblade9
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: nodenuvem9.sj.ifsc.edu.br
+- address: proxmoxhp2.sj.ifsc.edu.br
   role: [worker]
   hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: 191.36.8.1
-  role: [worker]
+- address: proxmoxhp1.sj.ifsc.edu.br
+  role: [controlplane,worker,etcd]
   hostname_override: proxmoxhp1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
