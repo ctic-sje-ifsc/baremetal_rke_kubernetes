@@ -22,7 +22,7 @@ nodes:
 #   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem5.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
-  hostname_override: nodenuvem5
+  hostname_override: proxmoxdell1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: nodenuvem6.sj.ifsc.edu.br
