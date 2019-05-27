@@ -5,16 +5,16 @@ nodes:
   hostname_override: nodenuvem1
   user: rancher
   ssh_key_path: ~/.ssh/id_rsa
-# - address: nodenuvem2.sj.ifsc.edu.br
-#   role: [worker]
-#   hostname_override: nodenuvem2
-#   user: rancher
-#   ssh_key_path: ~/.ssh/id_rsa
-# - address: nodenuvem3.sj.ifsc.edu.br
-#   role: [worker]
-#   hostname_override: nodenuvem3
-#   user: rancher
-#   ssh_key_path: ~/.ssh/id_rsa
+- address: proxmoxworks2.sj.ifsc.edu.br
+  role: [worker]
+  hostname_override: proxmoxworks2
+  user: ctic
+  ssh_key_path: ~/.ssh/id_rsa
+- address: proxmoxworks3.sj.ifsc.edu.br
+  role: [worker]
+  hostname_override: proxmoxworks3
+  user: ctic
+  ssh_key_path: ~/.ssh/id_rsa
 # - address: nodenuvem4.sj.ifsc.edu.br
 #   role: [worker]
 #   hostname_override: nodenuvem4
