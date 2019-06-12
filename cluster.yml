@@ -59,6 +59,10 @@ services:
     snapshot: true
     creation: 5h0s
     retention: 48h
+  kubelet:
+    extra_binds:
+      - "/etc/iscsi:/etc/iscsi"
+      - "/sbin/iscsiadm:/sbin/iscsiadm"
 
 # Antes estavamos utilizando a flag 'kubernetes_version: "v1.8.11-rancher2-1"', e sem o system_images. 
 # e por algum motivo com a atualização do rke ele ignorou e atualizou o kubernetes para hyperkube:v1.11.1-rancher1. 
