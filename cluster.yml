@@ -25,29 +25,19 @@ nodes:
   hostname_override: proxmoxdell1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxblade1.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
-  hostname_override: proxmoxblade1
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxblade2.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: proxmoxblade2
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxblade9.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: proxmoxblade9
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxhp2.sj.ifsc.edu.br
-  role: [worker]
+  role: [controlplane,worker,etcd]
   hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxhp1.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
   hostname_override: proxmoxhp1
+  user: ctic
+  ssh_key_path: ~/.ssh/id_rsa
+- address: proxmoxlenovo1.sj.ifsc.edu.br
+  role: [worker]
+  hostname_override: proxmoxlenovo1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 
@@ -69,7 +59,7 @@ services:
 # Segunto https://rancher.com/docs/rke/v0.1.x/en/config-options/#kubernetes-version o system_images é precedente ao kubernetes_version. 
 # E segundo https://rancher.com/docs/rke/v0.1.x/en/upgrades/ não é possível fazer downgrade, então por hora fixei nessa versão.
 system_images:
-    kubernetes: rancher/hyperkube:v1.12.7-rancher1
+    kubernetes: rancher/hyperkube:v1.12.9-rancher1
 
 authentication:
   strategy: x509
