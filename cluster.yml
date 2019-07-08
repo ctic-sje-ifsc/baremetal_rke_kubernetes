@@ -1,32 +1,32 @@
 ---
 nodes:
-- address: proxmoxworks1.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
-  hostname_override: proxmoxworks1
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxworks2.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: proxmoxworks2
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxworks3.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: proxmoxworks3
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
+# - address: proxmoxworks1.sj.ifsc.edu.br
+#   role: [controlplane,worker,etcd]
+#   hostname_override: proxmoxworks1
+#   user: ctic
+#   ssh_key_path: ~/.ssh/id_rsa
+# - address: proxmoxworks2.sj.ifsc.edu.br
+#   role: [worker]
+#   hostname_override: proxmoxworks2
+#   user: ctic
+#   ssh_key_path: ~/.ssh/id_rsa
+# - address: proxmoxworks3.sj.ifsc.edu.br
+#   role: [worker]
+#   hostname_override: proxmoxworks3
+#   user: ctic
+#   ssh_key_path: ~/.ssh/id_rsa
 # - address: nodenuvem4.sj.ifsc.edu.br
 #   role: [worker]
 #   hostname_override: nodenuvem4
 #   user: rancher
 #   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxdell1.sj.ifsc.edu.br
-  role: [worker]
+  role: [controlplane,worker,etcd]
   hostname_override: proxmoxdell1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxhp2.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
+  role: [worker]
   hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
@@ -36,13 +36,17 @@ nodes:
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxlenovo1.sj.ifsc.edu.br
-  role: [worker]
+  role: [controlplane,worker,etcd]
   hostname_override: proxmoxlenovo1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 
+ssh_key_path: ~/.ssh/id_rsa
+
+cluster_name: nuvem-ifsc-sje
+
 network:
-  plugin: flannel
+    plugin: flannel
 
 services:
   etcd:
@@ -54,18 +58,38 @@ services:
       - "/etc/iscsi:/etc/iscsi"
       - "/sbin/iscsiadm:/sbin/iscsiadm"
 
-# Antes estavamos utilizando a flag 'kubernetes_version: "v1.8.11-rancher2-1"', e sem o system_images. 
-# e por algum motivo com a atualização do rke ele ignorou e atualizou o kubernetes para hyperkube:v1.11.1-rancher1. 
-# Segunto https://rancher.com/docs/rke/v0.1.x/en/config-options/#kubernetes-version o system_images é precedente ao kubernetes_version. 
-# E segundo https://rancher.com/docs/rke/v0.1.x/en/upgrades/ não é possível fazer downgrade, então por hora fixei nessa versão.
+kubernetes_version: "v1.13.5-rancher1-3"
+
 system_images:
-    kubernetes: rancher/hyperkube:v1.12.9-rancher1
+    kubernetes: rancher/hyperkube:v1.13.5-rancher1
 
 authentication:
   strategy: x509
   sans:
   - "api-cloud.sj.ifsc.edu.br"
 
-ssh_key_path: ~/.ssh/id_rsa
+dns:
+    provider: kube-dns
+    upstreamnameservers:
+    - 191.36.8.2  
+    - 191.36.8.3
+
+ingress: 
+  provider: "nginx"
+  extra_args:
+    default-ssl-certificate: "ingress-nginx/ingress-default-cert"
+
+# As chaves tls.crt e tls.key (o arquivo abaixo) estão no arquivo no ingress-default-cert.yaml no nosso repositório secrets_kubernetes.
 
 addons: |-
+  ---
+  apiVersion: v1
+  data:
+    tls.crt: *
+    tls.key: *
+  kind: Secret
+  metadata:
+    creationTimestamp: null
+    name: ingress-default-cert
+    namespace: ingress-nginx
+  type: kubernetes.io/tls  
