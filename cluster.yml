@@ -15,10 +15,21 @@ nodes:
 #   hostname_override: proxmoxworks3
 #   user: ctic
 #   ssh_key_path: ~/.ssh/id_rsa
-# - address: nodenuvem4.sj.ifsc.edu.br
-#   role: [worker]
-#   hostname_override: nodenuvem4
-#   user: rancher
+
+# - address: vmnuvem1.sj.ifsc.edu.br
+#   role: [worker,etcd]
+#   hostname_override: vmnuvem1
+#   user: root
+#   ssh_key_path: ~/.ssh/id_rsa
+# - address: vmnuvem2.sj.ifsc.edu.br
+#   role: [worker,etcd]
+#   hostname_override: vmnuvem2
+#   user: root
+#   ssh_key_path: ~/.ssh/id_rsa
+# - address: vmnuvem3.sj.ifsc.edu.br
+#   role: [worker,etcd]
+#   hostname_override: vmnuvem3
+#   user: root
 #   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxdell1.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
@@ -26,13 +37,8 @@ nodes:
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxhp2.sj.ifsc.edu.br
-  role: [worker]
-  hostname_override: proxmoxhp2
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxhp1.sj.ifsc.edu.br
   role: [controlplane,worker,etcd]
-  hostname_override: proxmoxhp1
+  hostname_override: proxmoxhp2
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxlenovo1.sj.ifsc.edu.br
@@ -44,6 +50,9 @@ nodes:
 ssh_key_path: ~/.ssh/id_rsa
 
 cluster_name: nuvem-ifsc-sje
+
+ignore_docker_version: false
+ssh_agent_auth: true
 
 network:
     plugin: flannel
