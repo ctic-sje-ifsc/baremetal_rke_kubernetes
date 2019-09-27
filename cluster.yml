@@ -22,17 +22,17 @@ nodes:
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: vmnuvem2.sj.ifsc.edu.br
-  role: [worker]
+  role: [worker,etcd]
   hostname_override: vmnuvem2
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: vmnuvem3.sj.ifsc.edu.br
-  role: [worker]
+  role: [worker,etcd]
   hostname_override: vmnuvem3
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxdell1.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
+  role: [controlplane,worker]
   hostname_override: proxmoxdell1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
@@ -42,7 +42,7 @@ nodes:
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxlenovo1.sj.ifsc.edu.br
-  role: [controlplane,worker,etcd]
+  role: [controlplane,worker]
   hostname_override: proxmoxlenovo1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
