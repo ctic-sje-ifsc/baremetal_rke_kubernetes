@@ -1,49 +1,23 @@
 ---
 nodes:
-# - address: proxmoxworks1.sj.ifsc.edu.br
-#   role: [controlplane,worker,etcd]
-#   hostname_override: proxmoxworks1
-#   user: ctic
-#   ssh_key_path: ~/.ssh/id_rsa
-# - address: proxmoxworks2.sj.ifsc.edu.br
-#   role: [worker]
-#   hostname_override: proxmoxworks2
-#   user: ctic
-#   ssh_key_path: ~/.ssh/id_rsa
-# - address: proxmoxworks3.sj.ifsc.edu.br
-#   role: [worker]
-#   hostname_override: proxmoxworks3
-#   user: ctic
-#   ssh_key_path: ~/.ssh/id_rsa
-
 - address: vmnuvem1.sj.ifsc.edu.br
-  role: [worker,etcd]
+  role: [controlplane,worker,etcd]
   hostname_override: vmnuvem1
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: vmnuvem2.sj.ifsc.edu.br
-  role: [worker,etcd]
+  role: [controlplane,worker,etcd]
   hostname_override: vmnuvem2
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: vmnuvem3.sj.ifsc.edu.br
-  role: [worker,etcd]
+  role: [controlplane,worker,etcd]
   hostname_override: vmnuvem3
   user: root
   ssh_key_path: ~/.ssh/id_rsa
 - address: proxmoxdell1.sj.ifsc.edu.br
-  role: [controlplane,worker]
+  role: [worker]
   hostname_override: proxmoxdell1
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxhp2.sj.ifsc.edu.br
-  role: [controlplane,worker]
-  hostname_override: proxmoxhp2
-  user: ctic
-  ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxlenovo1.sj.ifsc.edu.br
-  role: [controlplane,worker]
-  hostname_override: proxmoxlenovo1
   user: ctic
   ssh_key_path: ~/.ssh/id_rsa
 
@@ -51,7 +25,6 @@ ssh_key_path: ~/.ssh/id_rsa
 
 cluster_name: nuvem-ifsc-sje
 
-ignore_docker_version: true
 ssh_agent_auth: true
 
 network:
@@ -67,10 +40,10 @@ services:
       - "/etc/iscsi:/etc/iscsi"
       - "/sbin/iscsiadm:/sbin/iscsiadm"
 
-kubernetes_version: "v1.13.5-rancher1-3"
+kubernetes_version: "v1.13.10-rancher1-2"
 
 system_images:
-    kubernetes: rancher/hyperkube:v1.13.5-rancher1
+    kubernetes: rancher/hyperkube:v1.13.10-rancher1
 
 authentication:
   strategy: x509
@@ -90,15 +63,15 @@ ingress:
 
 # As chaves tls.crt e tls.key (o arquivo abaixo) estão no arquivo no ingress-default-cert.yaml no nosso repositório secrets_kubernetes.
 
-addons: |-
-  ---
-  apiVersion: v1
-  data:
-    tls.crt: *
-    tls.key: *
-  kind: Secret
-  metadata:
-    creationTimestamp: null
-    name: ingress-default-cert
-    namespace: ingress-nginx
-  type: kubernetes.io/tls  
+# addons: |-
+#   ---
+#   apiVersion: v1
+#   data:
+#     tls.crt: *
+#     tls.key: *
+#   kind: Secret
+#   metadata:
+#     creationTimestamp: null
+#     name: ingress-default-cert
+#     namespace: ingress-nginx
+#   type: kubernetes.io/tls  
