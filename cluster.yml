@@ -15,10 +15,15 @@ nodes:
   hostname_override: vmnuvem3
   user: root
   ssh_key_path: ~/.ssh/id_rsa
-- address: proxmoxdell1.sj.ifsc.edu.br
+- address: vmnuvem4.sj.ifsc.edu.br
   role: [worker]
-  hostname_override: proxmoxdell1
-  user: ctic
+  hostname_override: vmnuvem4
+  user: root
+  ssh_key_path: ~/.ssh/id_rsa
+- address: vmnuvem5.sj.ifsc.edu.br
+  role: [worker]
+  hostname_override: vmnuvem5
+  user: root
   ssh_key_path: ~/.ssh/id_rsa
 
 ssh_key_path: ~/.ssh/id_rsa
@@ -40,10 +45,10 @@ services:
       - "/etc/iscsi:/etc/iscsi"
       - "/sbin/iscsiadm:/sbin/iscsiadm"
 
-kubernetes_version: "v1.13.10-rancher1-2"
+#kubernetes_version: "v1.13.11-rancher1-2"
 
 system_images:
-    kubernetes: rancher/hyperkube:v1.13.10-rancher1
+    kubernetes: rancher/hyperkube:v1.13.11-rancher1
 
 authentication:
   strategy: x509
@@ -64,7 +69,6 @@ ingress:
 # As chaves tls.crt e tls.key (o arquivo abaixo) estão no arquivo no ingress-default-cert.yaml no nosso repositório secrets_kubernetes.
 
 # addons: |-
-#   ---
 #   apiVersion: v1
 #   data:
 #     tls.crt: *
@@ -74,4 +78,4 @@ ingress:
 #     creationTimestamp: null
 #     name: ingress-default-cert
 #     namespace: ingress-nginx
-#   type: kubernetes.io/tls  
+#   type: kubernetes.io/tls
